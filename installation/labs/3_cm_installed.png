@@ -1,0 +1,26 @@
+#### setup a repo for cloudera manager
+wget https://archive.cloudera.com/cm5/redhat/7/x86_64/cm/cloudera-manager.repo -P /etc/yum.repos.d 
+
+#### Import the repository signing GPG key
+rpm --import https://archive.cloudera.com/cdh5/redhat/7/x86_64/cdh/RPM-GPG-KEY-cloudera
+
+#### update
+yum -y update
+
+#### install clouder manager server
+yum install cloudera-manager-daemons cloudera-manager-server
+
+#### Install CDh and other Softwares
+#### start cloudera manager server
+systemctl start cloudera-scm-server
+
+#### stop the service aganet
+service cloudera-scm-agent stop
+----
+service cloudera-scm-agent start
+
+#### before starts the cloudera manager wizard check this condition
+service cloudera-scm-server status
+
+#### Wait several minutes for the Cloudera Manager Server to start. To observe the startup process, run the following on the Cloudera Manager Server host:
+tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log

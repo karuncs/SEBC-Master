@@ -12,10 +12,10 @@ systemctl start mysqld
 
 ##### on all nodes
 
-yum install -ý mysql
+yum install -y mysql
 
 
-#####  to stop MySQl server if it running mys
+#####  to stop MySQl server if it running mysql
 systemctl stop mysqld
 
 ##### Ensuer that Mysql start as a root
@@ -42,7 +42,7 @@ cp mysql-connector-java-5.1.31/mysql-connector-java-5.1.31-bin.jar /usr/share/ja
 ##### Log in as the root user, or another user with privileges to create database and grant privileges:
 mysql -u root -p
 
-mysql> GRANT REPLICATION SLAVE ON *.* TO 'user'@'FQDN' IDENTIFIED BY 'password';
+mysql> GRANT REPLICATION SLAVE ON *.* TO 'centos'@'ec2-52-59-211-4.eu-central-1.compute.amazonaws.com' IDENTIFIED BY 'password';
 
 mysql> SET GLOBAL binlog_format = 'ROW'; 
 
