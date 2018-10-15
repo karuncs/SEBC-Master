@@ -22,9 +22,6 @@ HOSTNAME=ec2-52-59-211-4.eu-central-1.compute.amazonaws.com
 ###### firewall status
 systemctl status firewalld.service 
 
-###### iptables status
-
-
 ######
 Transparent Huge Page Compaction is enabled and can cause significant performance problems. Run 
 "echo never > /sys/kernel/mm/transparent_hugepage/defrag" and 
@@ -37,6 +34,8 @@ echo never > /sys/kernel/mm/transparent_hugepage/defrag
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 and then add the same command to an init script such as /etc/rc.local so it will be set on system reboot. The following hosts are affected: 
+echo "never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
+echo "never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
 
 ##### check nscd status
   sudo yum install -y nscd
