@@ -1,6 +1,6 @@
 #### Make proper hostnames.. good to have a hostname as fqdn
 	sudo vi /etc/hostname
-	
+
 #### Make persistant hosts with fqdns and/or shortname(optional)
 
 18.194.110.208 ec2-18-194-110-208.eu-central-1.compute.amazonaws.com masterNode
@@ -11,3 +11,11 @@
 
 52.59.211.4 ec2-52-59-211-4.eu-central-1.compute.amazonaws.com dataNode2
 
+
+
+##### test the connection/communication between servers/instances
+
+     ssh -i xxxxx.pem centos@fqdn
+     for instance: ssh -i ClouderaBootcampKey.pem centos@ec2-18-184-233-154.eu-central-1.compute.amazonaws.com
+	  to make this work, get the pem file from aws and put it on all instances and change the permissions on each node
+		chmod 400 ClouderaBootcampKey.pem
