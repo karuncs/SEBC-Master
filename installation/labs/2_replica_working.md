@@ -1,5 +1,8 @@
 ##### install Mysql database 5.7 version
 
+###### MasterSQL....
+the host here is: ec2-52-59-211-4.eu-central-1.compute.amazonaws.com
+
 wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
 rpm -ivh mysql-community-release-el7-5.noarch.rpm
@@ -9,6 +12,9 @@ yum update
 yum install mysql-server
 
 systemctl start mysqld
+
+##### Run /usr/bin/mysql_secure_installation to set the MySQL root password and other security-related settings.
+/usr/bin/mysql_secure_installation 
 
 ##### on all nodes
 
@@ -21,31 +27,32 @@ systemctl stop mysqld
 ##### Ensuer that Mysql start as a root
 systemctl enable mysqld
 
+##### create a user and grant permissions
+
+mysql>create user 'repl'@'ec2-18-184-233-154.eu-central-1.compute.amazonaws.com' identified by 'Bootcamp';
+
+mysql>grant replication slave on *.* to 'repl'@'ec2-18-184-233-154.eu-central-1.compute.amazonaws.com';
+
+mysql>SET GLOBAL binlog_format = 'ROW'; 
+
+mysql> FLUSH TABLES WITH READ LOCK;
+
+##### do same on replicate server means another host
+the replication host is: ec2-18-184-233-154.eu-central-1.compute.amazonaws.com
+
+mysql -u root -p
+
 ##### download and copy JDBC driver on all nodes
 
 Install the JDBC driver on the Cloudera Manager Server host, as well as any other hosts running services that require database access.
 
-wget https://dev.mysql.com/downloads/file/?id=476197
+download the pltform independent jdbc driver from : https://dev.mysql.com/downloads/connector/j/5.1.html
 
-tar zxvf mysql-connector-java-5.1.46.tar.gz
-
-cp mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /usr/share/java/mysql-connector-java.jar
+tar zxvf mysql-connector-java-5.1.47.tar.gz
 
 mkdir -p /usr/share/java/
 
-cp mysql-connector-java-5.1.31/mysql-connector-java-5.1.31-bin.jar /usr/share/java/mysql-connector-java.jar
+
+cp mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-java.jar
 
 
-##### Run /usr/bin/mysql_secure_installation to set the MySQL root password and other security-related settings.
-/usr/bin/mysql_secure_installation 
-
-##### Log in as the root user, or another user with privileges to create database and grant privileges:
-mysql -u root -p
-
-mysql> GRANT REPLICATION SLAVE ON *.* TO 'centos'@'ec2-52-59-211-4.eu-central-1.compute.amazonaws.com' IDENTIFIED BY 'password';
-
-mysql> SET GLOBAL binlog_format = 'ROW'; 
-
-mysql> FLUSH TABLES WITH READ LOCK;
-
-##### create a database for cloudera

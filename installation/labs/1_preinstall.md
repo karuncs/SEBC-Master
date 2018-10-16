@@ -87,3 +87,19 @@ systemctl status firewalld.service
 
    sudo service ntpd status
 
+###### JDK installation and path setup
+
+Download the jdk-8u162-linux-x64
+
+rpm -ivh jdk-8u162-linux-x64.rpm
+
+create bash profile 
+
+# export Java in .bashfile
+ vi ~/.bash_profile
+export JAVA_HOME=/usr/java/jdk1.8.0_162
+export PATH=$PATH:$JAVA_HOME\bin
+source ~/.bash_profile
+# check the java path is updated or not
+
+echo $JAVA_HOME
