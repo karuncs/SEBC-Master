@@ -70,6 +70,11 @@ getent hosts 52.59.211.4
 ###### firewall status
 systemctl status firewalld.service 
 
+systemctl status firewalld
+
+###### iptables status
+
+systemctl status iptable
 
 ##### check nscd status
 
