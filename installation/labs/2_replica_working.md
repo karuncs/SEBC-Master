@@ -50,9 +50,36 @@ download the pltform independent jdbc driver from : https://dev.mysql.com/downlo
 
 tar zxvf mysql-connector-java-5.1.47.tar.gz
 
-mkdir -p /usr/share/java/
+sudo mkdir -p /usr/share/java/
+
+sudo cp mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-java.jar
 
 
-cp mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar /usr/share/java/mysql-connector-java.jar
 
 
+#Log in as the root user, or another user with privileges to create database and grant privileges:
+mysql -u root -p
+#create a database for cloudera
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE oozie DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE hue DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE scm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; 
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE rman DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+GRANT ALL ON metastore.* TO 'hive'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY 'Bootcamp';
+
+You can also confirm the privilege grants for a given user by running:
+SHOW GRANTS FOR 'scm'@'%';
+/usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm Ace4ever
+# give the access for databases
+GRANT ALL ON <database>.* TO '<user>'@'%' IDENTIFIED BY '<password>'
+# Run the scm_prepare_database.sh script on the host where the Cloudera Manager Server package is installed:
+
+#/usr/share/cmf/schema/scm_prepare_database.sh database-type mysql database-name username password
+/usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm

@@ -40,3 +40,7 @@ service cloudera-scm-server status
 
 #### Wait several minutes for the Cloudera Manager Server to start. To observe the startup process, run the following on the Cloudera Manager Server host:
 tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+
+
+
+cloudera manager : http://ec2-18-185-68-231.eu-central-1.compute.amazonaws.com:7180
