@@ -26,6 +26,8 @@ yum install cloudera-manager-daemons cloudera-manager-server
 #### start cloudera manager server
 systemctl start cloudera-scm-server
 
+systemctl status cloudera-scm-server
+
 #### stop the service aganet
 service cloudera-scm-agent stop
 ----
@@ -33,6 +35,8 @@ service cloudera-scm-agent start
 
 #### before starts the cloudera manager wizard check this condition
 service cloudera-scm-server status
+
+##### add the port:7180 inbuond rules
 
 #### Wait several minutes for the Cloudera Manager Server to start. To observe the startup process, run the following on the Cloudera Manager Server host:
 tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log

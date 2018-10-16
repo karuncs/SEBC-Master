@@ -2,6 +2,20 @@
 	sudo vi /etc/hostname
 
 #### Make persistant hosts with fqdns and/or shortname(optional)
+Take internal Ip and domain names
+
+
+
+172.31.32.43 ip-172-31-32-43.eu-central-1.compute.internal Master
+
+172.31.40.51 ip-172-31-40-51.eu-central-1.compute.internal SecondaryMasterNoe
+
+172.31.33.225 ip-172-31-33-225.eu-central-1.compute.internal DataNode1
+
+172.31.36.19 ip-172-31-36-19.eu-central-1.compute.internal DataNode2
+
+
+external 
 
 18.194.110.208 ec2-18-194-110-208.eu-central-1.compute.amazonaws.com masterNode
 
