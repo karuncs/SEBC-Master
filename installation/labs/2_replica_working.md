@@ -18,7 +18,7 @@ systemctl start mysqld
 
 ##### on all nodes
 
-yum install -y mysql
+sudo yum install -y mysql
 
 
 #####  to stop MySQl server if it running mysql

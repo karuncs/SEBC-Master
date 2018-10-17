@@ -63,8 +63,12 @@ getent hosts 52.59.211.4
 
 ##### Disabled SELinux
   sudo vi /etc/selinux/config
-
+  
     SELinux=disabled
+    
+
+echo 0 > /sys/fs/selinux/enforce
+
 
 
 ###### firewall status
