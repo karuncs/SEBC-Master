@@ -31,7 +31,7 @@ keytool -import -alias cmhost -file /opt/cloudera/security/jks/selfsigned.cer -k
  setup kerbros
  https://gist.github.com/ashrithr/4767927948eca70845db
  https://blog.puneethabm.com/configure-hadoop-security-with-cloudera-manager-using-kerberos/
- 
+
 
  install on cm:  yum install openldap-clients
  install on all nodes: 
@@ -117,3 +117,33 @@ Now, let’s create a principal for our KDC server and stick it in it’s keytab
 [root@kdc ~]# kadmin.local
 kadmin.local:  addprinc -randkey host/kdc.cw.com
 kadmin.local:  ktadd host/kdc.cw.com
+
+
+kadmin.local 
+
+modify_principal +allow_renewable -maxrenewlife 7day HTTP/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day HTTP/ip-172-31-35-31.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day HTTP/ip-172-31-35-54.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day HTTP/ip-172-31-38-8.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day HTTP/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day K/M@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day cloudera-scm@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hdfs/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hdfs/ip-172-31-35-31.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hdfs/ip-172-31-38-8.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hdfs/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hive/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day httpfs/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day hue/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day kadmin/admin@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day kadmin/changepw@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day kadmin/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day kiprop/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day krbtgt/BOOTCAMP.COM@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day mapred/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day oozie/ip-172-31-35-54.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day yarn/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day yarn/ip-172-31-38-8.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day zookeeper/ip-172-31-35-155.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day zookeeper/ip-172-31-35-31.eu-west-2.compute.internal@BOOTCAMP.COM
+modify_principal +allow_renewable -maxrenewlife 7day zookeeper/ip-172-31-44-83.eu-west-2.compute.internal@BOOTCAMP.COM
