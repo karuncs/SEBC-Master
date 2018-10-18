@@ -48,7 +48,7 @@ Install the JDBC driver on the Cloudera Manager Server host, as well as any othe
 
 download the pltform independent jdbc driver from : https://dev.mysql.com/downloads/connector/j/5.1.html
 
-tar zxvf mysql-connector-java-5.1.47.tar.gz
+sudo tar zxvf mysql-connector-java-5.1.47.tar.gz
 
 sudo mkdir -p /usr/share/java/
 
@@ -60,18 +60,18 @@ sudo cp mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar /usr/sha
 #Log in as the root user, or another user with privileges to create database and grant privileges:
 mysql -u root -p
 #create a database for cloudera
-CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE hive DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 CREATE DATABASE oozie DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 CREATE DATABASE hue DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 CREATE DATABASE scm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; 
-CREATE DATABASE amon DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 CREATE DATABASE rman DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
-GRANT ALL ON metastore.* TO 'hive'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'Bootcamp';
-GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON sentry.* TO 'amon'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY 'Bootcamp';
 
 You can also confirm the privilege grants for a given user by running:
@@ -83,3 +83,16 @@ GRANT ALL ON <database>.* TO '<user>'@'%' IDENTIFIED BY '<password>'
 
 #/usr/share/cmf/schema/scm_prepare_database.sh database-type mysql database-name username password
 /usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm
+
+## check the db version
+SELECT VERSION();
+SHOW VARIABLES LIKE "%version%";
+
+mysql -u root -p -e 'SHOW VARIABLES LIKE "%version%";'
+
+hostname : ip-172-31-44-83.eu-west-2.compute.internal
+
+show databases;
+
+
+chnage the hostname in db properties: vi /etc/cloudera-scm-server/db.properties
