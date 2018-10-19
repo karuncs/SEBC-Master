@@ -1,7 +1,20 @@
 #### Make persistant hosts with fqdns and/or shortname(optional)
-Cloud Provider: AWS cloud
+######  Cloud Provider: 
 
-Linux Release: hostnamectl
+AWS cloud
+
+####### Linux Release
+
+    Static hostname: ip-172-31-36-142.eu-west-2.compute.internal
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: b30d0f2110ac3807b210c19ede3ce88f
+           Boot ID: 9f08598860934b069266a117dd80ec36
+    Virtualization: xen
+  Operating System: CentOS Linux 7 (Core)
+       CPE OS Name: cpe:/o:centos:centos:7
+            Kernel: Linux 3.10.0-862.3.2.el7.x86_64
+      Architecture: x86-64
 
 ###### DiskSpace
  
