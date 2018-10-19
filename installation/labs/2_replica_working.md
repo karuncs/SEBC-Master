@@ -56,7 +56,6 @@ sudo cp mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar /usr/sha
 
 
 
-
 #Log in as the root user, or another user with privileges to create database and grant privileges:
 mysql -u root -p
 #create a database for cloudera
@@ -71,7 +70,7 @@ GRANT ALL ON hive.* TO 'hive'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'Bootcamp';
-GRANT ALL ON sentry.* TO 'amon'@'%' IDENTIFIED BY 'Bootcamp';
+GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY 'Bootcamp';
 GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY 'Bootcamp';
 
 You can also confirm the privilege grants for a given user by running:

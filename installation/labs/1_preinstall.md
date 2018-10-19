@@ -1,3 +1,19 @@
+
+##### mount and reserve space
+ mount
+ lsblk
+
+ ##### network
+ ifconfig
+
+ ###### lookups
+getent hosts xxxxxx
+
+###### install packages
+yum install -y bind-utils
+yum install -y wget
+
+
 ##### check the swappiness on eachnode and set it to 1
         to check current swappiness: sysctl status vm.swappiness
 		to make as 1: sudo sysctl vm.swappiness=1
@@ -26,9 +42,8 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 and then add the same command to an init script such as /etc/rc.local so it will be set on system reboot. The following hosts are affected: 
 
-echo "never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
-
-echo "never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
+sudo echo "never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
+sudo echo "never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.local
 
 ##### Edit sudo vi /etc/sysconfig/network with the FQDN of corresponding host only
 HOSTNAME=ec2-18-194-110-208.eu-central-1.compute.amazonaws.com
@@ -61,15 +76,15 @@ getent hosts 52.59.211.4
 52.59.211.4     ec2-52-59-211-4.eu-central-1.compute.amazonaws.com dataNode2
 
 
+#### yum utils
+
+yum install -y yum-utils
+
 ##### Disabled SELinux
   sudo vi /etc/selinux/config
   
     SELinux=disabled
-    
-
 echo 0 > /sys/fs/selinux/enforce
-
-
 
 ###### firewall status
 systemctl status firewalld.service 
@@ -87,6 +102,12 @@ systemctl status iptable
    sudo service nscd start
 
    sudo service nscd status
+
+   ##### httpd
+   sudo yum install -y httpd
+
+sudo systemctl start httpd
+systemctl status httpd
 
 ####check ntpd status
 
