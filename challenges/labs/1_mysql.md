@@ -20,6 +20,7 @@ SHOW VARIABLES LIKE "%version%";
 ##### List of databases
 
 show databases;
+`
 +--------------------+
 | Database           |
 +--------------------+
@@ -34,3 +35,5 @@ show databases;
 | sentry             |
 +--------------------+
 9 rows in set (0.00 sec)
+
+`
