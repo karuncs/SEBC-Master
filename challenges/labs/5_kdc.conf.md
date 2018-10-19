@@ -1,10 +1,9 @@
-default_realm = BOOTCAMP.COM
 [kdcdefaults]
  kdc_ports = 88
  kdc_tcp_ports = 88
 
 [realms]
- BOOTCAMP.COM = {
+ MFERNEST.SG = {
   #master_key_type = aes256-cts
   acl_file = /var/kerberos/krb5kdc/kadm5.acl
   dict_file = /usr/share/dict/words
@@ -15,8 +14,5 @@ default_realm = BOOTCAMP.COM
   max_renewable_life = 7d
  }
 
- /var/kerberos/krb5kdc/kadm5.acl
 
-
-*/admin@EXAMPLE.COM     *
-cloudera-scm@MFERNEST.SG admicl
+~
