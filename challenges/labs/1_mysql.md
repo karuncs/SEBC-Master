@@ -4,6 +4,7 @@
 ###### DB Version
 SHOW VARIABLES LIKE "%version%";
 
+`
 +-------------------------+------------------------------+
 | Variable_name           | Value                        |
 +-------------------------+------------------------------+
@@ -15,7 +16,7 @@ SHOW VARIABLES LIKE "%version%";
 | version_compile_machine | x86_64                       |
 | version_compile_os      | Linux                        |
 +-------------------------
-
+`
 ##### List of databases
 
 show databases;
